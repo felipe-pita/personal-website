@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'posts/**/*'
+      - 'pages/**/*'
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Composer - setup and install
+        run: composer install --prefer-dist --no-ansi --no-interaction --no-progress --optimize-autoloader
+
+      - name: Publish
+        run: composer publish
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Posts/Pages published
+#          token: ${{ secrets.ORG_TOKEN_PKG_WRITER }}
