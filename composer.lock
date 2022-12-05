@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29bfb1c2de2574307bb3c7ec9816159b",
+    "content-hash": "7a658d02ea76db22cf27610093c9b027",
     "packages": [
+        {
+            "name": "erusev/parsedown",
+            "version": "1.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Parsedown": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "Parser for Markdown.",
+            "homepage": "http://parsedown.org",
+            "keywords": [
+                "markdown",
+                "parser"
+            ],
+            "support": {
+                "issues": "https://github.com/erusev/parsedown/issues",
+                "source": "https://github.com/erusev/parsedown/tree/1.7.x"
+            },
+            "time": "2019-12-30T22:54:17+00:00"
+        },
         {
             "name": "league/climate",
             "version": "3.8.2",
@@ -70,6 +120,54 @@
                 "source": "https://github.com/thephpleague/climate/tree/3.8.2"
             },
             "time": "2022-06-18T14:42:08+00:00"
+        },
+        {
+            "name": "mehrdad-dadkhah/php-file-finder",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mehrdad-Dadkhah/php-file-finder.git",
+                "reference": "d8fee05ee0f313fe841f8c7157003f4934406c34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mehrdad-Dadkhah/php-file-finder/zipball/d8fee05ee0f313fe841f8c7157003f4934406c34",
+                "reference": "d8fee05ee0f313fe841f8c7157003f4934406c34",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "symfony/process": "^2.5|^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MehrdadDadkhah\\File\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Mehrdad Dadkhah",
+                    "email": "mehrdad@dadkhah.me"
+                }
+            ],
+            "description": "simple package to search files and directories and return full path and related information",
+            "homepage": "https://github.com/Mehrdad-Dadkhah/php-file-finder",
+            "keywords": [
+                "file",
+                "file_info",
+                "finder",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/Mehrdad-Dadkhah/php-file-finder/issues",
+                "source": "https://github.com/Mehrdad-Dadkhah/php-file-finder/tree/master"
+            },
+            "time": "2018-02-04T06:02:18+00:00"
         },
         {
             "name": "psr/log",
@@ -175,6 +273,67 @@
                 "source": "https://github.com/Seldaek/cli-prompt/tree/1.0.4"
             },
             "time": "2020-12-15T21:32:01+00:00"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v3.4.47",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "b8648cf1d5af12a44a51d07ef9bf980921f15fca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/b8648cf1d5af12a44a51d07ef9bf980921f15fca",
+                "reference": "b8648cf1d5af12a44a51d07ef9bf980921f15fca",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v3.4.47"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-24T10:57:07+00:00"
         }
     ],
     "packages-dev": [],

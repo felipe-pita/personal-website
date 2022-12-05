@@ -8,7 +8,9 @@
         }
     ],
     "require": {
-        "league/climate": "^3.8"
+        "league/climate": "^3.8",
+        "mehrdad-dadkhah/php-file-finder": "^1.1",
+        "erusev/parsedown": "^1.7"
     },
     "scripts": {
         "publish": [
