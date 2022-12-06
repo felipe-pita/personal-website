@@ -1,12 +1,12 @@
 <?php
 
-use JetBrains\PhpStorm\NoReturn;
+namespace app;
+
 use League\CLImate\CLImate;
-use MehrdadDadkhah\File\Finder;
+use Parsedown;
 
-require __DIR__ . '/vendor/autoload.php';
-
-Class Publisher {
+class Publisher
+{
     private readonly string $publicFolder;
     private readonly array $contentFolders;
 
@@ -108,7 +108,8 @@ Class Publisher {
                 $markdownFilePath = './' . $file['path'] . '/' . $file['filename'];
                 $this->cli->red($markdownFilePath);
 
-                $markdownFileContents = file_get_contents($markdownFilePath);
+                $markdownFileContents = $this->parseIncludes($markdownFilePath);
+
                 $markdownToHtml = $this->parsedown->parse($markdownFileContents);
 
                 $htmlFileName = str_replace('.md', '.html', $file['filename']);
@@ -123,10 +124,8 @@ Class Publisher {
         }
     }
 
-    #[NoReturn] private function dd($var): void
+    private function parseIncludes(string $filePath): string
     {
-        die(print_r($var));
+        return file_get_contents($filePath);
     }
 }
-
-(new Publisher())->publish();
