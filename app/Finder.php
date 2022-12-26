@@ -2,29 +2,19 @@
 
 namespace app;
 
+use SplFileInfo;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 class Finder
 {
-    private string $finder = 'find';
-
-    public function getFindCommand(string $path, string $fileName): array
-    {
-        return match ($this->finder) {
-            'locate' => ['locate', $fileName],
-            default => ['find', $path, '-name', $fileName],
-        };
-    }
-
     public function findFile(string $file, string $searchPath = '/home', $info = true): array
     {
-        $fileInfo = new \SplFileInfo($file);
-        if (!empty($fileInfo->getPath()) && $this->finder == 'finder') {
+        $fileInfo = new SplFileInfo($file);
+
+        if (!empty($fileInfo->getPath())) {
             $searchPath = $this->findDirectoryPath($fileInfo->getPath(), $searchPath);
-
             $searchPath = implode(' ', $searchPath);
-
             $file = $fileInfo->getBaseName();
         }
 
@@ -46,7 +36,46 @@ class Finder
         return $files;
     }
 
-    public function findDirectoryPath(string $path, string $searchPath = '/'): array
+    public function createFolder(string $path): bool
+    {
+        if (!is_dir($path)) {
+            return mkdir($path, 0700, true);
+        }
+
+        return false;
+    }
+
+    public function deleteFolder(string $src): bool
+    {
+        $dir = opendir($src);
+
+        while (false !== ($file = readdir($dir))) {
+            if (($file != '.') && ($file != '..')) {
+                $full = $src . '/' . $file;
+                if (is_dir($full)) {
+                    $this->deleteFolder($full);
+                } else {
+                    unlink($full);
+                }
+            }
+        }
+
+        closedir($dir);
+
+        return rmdir($src);
+    }
+
+    public function copyFile(string $from, string $to): bool
+    {
+        return copy($from, $to);
+    }
+
+    private function getFindCommand(string $path, string $fileName): array
+    {
+        return ['find', $path, '-name', $fileName];
+    }
+
+    private function findDirectoryPath(string $path, string $searchPath = '/'): array
     {
         $directories = explode('/', $path);
 
@@ -78,7 +107,7 @@ class Finder
         return $dataArray;
     }
 
-    public function makeData(array $files): array
+    private function makeData(array $files): array
     {
         $data = [];
 

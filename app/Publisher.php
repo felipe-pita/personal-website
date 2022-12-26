@@ -15,7 +15,7 @@ class Publisher
         public readonly Finder $finder = new Finder(),
         public readonly Parsedown $parsedown = new Parsedown(),
     ) {
-        $this->publicFolder = './public';
+        $this->publicFolder = './docs';
         $this->contentFolders = ['pages', 'posts'];
     }
 
@@ -29,7 +29,7 @@ class Publisher
     private function deletePublicFolder(): void
     {
         $this->cli->border('-', 100);
-        $this->cli->out('Deleting public folder');
+        $this->cli->out('Deleting docs folder');
 
         $folderExists = is_dir($this->publicFolder);
 
@@ -58,43 +58,7 @@ class Publisher
         }
     }
 
-    private function removeFolder(string $src): void
-    {
-        $dir = opendir($src);
 
-        while (false !== ($file = readdir($dir))) {
-            if (($file != '.') && ($file != '..')) {
-                $full = $src . '/' . $file;
-                if (is_dir($full)) {
-                    $this->removeFolder($full);
-                } else {
-                    unlink($full);
-                }
-            }
-        }
-
-        closedir($dir);
-
-        rmdir($src);
-    }
-
-    private function createFolder(string $path): void
-    {
-        $newPath = $this->publicFolder . '/' . $path;
-
-        if (!is_dir($newPath)) {
-            mkdir($newPath, 0700, true);
-        }
-    }
-
-    private function copyFile(string $path, string $file): void
-    {
-        $from = $path . '/' . $file;
-        $to = $this->publicFolder . '/' . $path . '/' . $file;
-        copy($from, $to);
-        $this->cli->red($from);
-        $this->cli->green($to);
-    }
 
     private function convertMarkdownFiles(): void
     {
