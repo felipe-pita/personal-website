@@ -7,12 +7,29 @@
             "email": "felipedefarias@live.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
     "require": {
-        "league/climate": "^3.8"
+        "league/climate": "^3.8",
+        "erusev/parsedown": "^1.7",
+        "symfony/process": "^6.2",
+        "ext-fileinfo": "*",
+        "larapack/dd": "^1.1"
     },
     "scripts": {
         "publish": [
             "php Publisher.php"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.22"
     }
 }
